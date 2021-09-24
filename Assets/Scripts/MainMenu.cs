@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
    
     public void EscenaJuego()
     {
-        SceneManager.LoadScene("level1");
+        SceneManager.LoadScene("CartoonOne");
     }
 
     public void OptionsPlay()

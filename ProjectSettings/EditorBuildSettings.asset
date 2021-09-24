@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Options.unity
     guid: 3f453b587a6776442a5d423245bd6d02
+  - enabled: 1
+    path: Assets/Scenes/CartoonOne.unity
+    guid: 4fb7921b871c86e478416ad9a924224e
   m_configObjects: {}
