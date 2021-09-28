@@ -12,6 +12,7 @@ public class JohnMovi : MonoBehaviour
     public float Speed;
     public float JumpForce;
     private float LastShoot;
+    private int Health = 5;
     
     void Start()
     {
@@ -80,6 +81,27 @@ public class JohnMovi : MonoBehaviour
     private void FixedUpdate()
     {
         Rigidbody2D.velocity = new Vector2(Horizontal, Rigidbody2D.velocity.y);
+    }
+
+    public void Hit()
+    {
+        Health -= 1;
+        if (Health == 0) Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "enemi")
+        {
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.tag == "ball")
+        {
+            Destroy(gameObject);
+        }
+
 
     }
+
 }
