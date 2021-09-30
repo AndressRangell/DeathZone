@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class JohnMovi : MonoBehaviour
 {
@@ -13,6 +15,8 @@ public class JohnMovi : MonoBehaviour
     public float JumpForce;
     private float LastShoot;
     private int Health = 5;
+    public string textValue;
+    public Text textEdit;
     
     void Start()
     {
@@ -55,6 +59,9 @@ public class JohnMovi : MonoBehaviour
             Shoot();
             LastShoot = Time.time;
         }
+
+        
+        textEdit.text = Health.ToString(); ;
     }
 
     private void Jump()
@@ -86,7 +93,11 @@ public class JohnMovi : MonoBehaviour
     public void Hit()
     {
         Health -= 1;
-        if (Health == 0) Destroy(gameObject);
+        if (Health == 0) 
+        { 
+            Destroy(gameObject);
+            Resect();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -94,14 +105,36 @@ public class JohnMovi : MonoBehaviour
         if (collision.gameObject.tag == "enemi")
         {
             Destroy(gameObject);
+            Resect();
         }
 
         if (collision.gameObject.tag == "ball")
         {
             Destroy(gameObject);
+            Resect();
         }
 
+        if (collision.gameObject.tag == "vacio")
+        {
+            Destroy(gameObject);
+            Resect();
+        }
 
+        if (collision.gameObject.tag == "finish")
+        {
+            SceneManager.LoadScene("CartoonOne");
+        }
     }
+
+    private void Resect()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    
+
+    
+
+
 
 }

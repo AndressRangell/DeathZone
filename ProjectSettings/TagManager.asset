@@ -6,6 +6,8 @@ TagManager:
   tags:
   - enemi
   - ball
+  - vacio
+  - finish
   layers:
   - Default
   - TransparentFX
