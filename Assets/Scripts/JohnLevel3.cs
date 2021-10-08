@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-public class JohnMovi : MonoBehaviour
+public class JohnLevel3 : MonoBehaviour
 {
     public GameObject BulletPrefab;
     private Rigidbody2D Rigidbody2D;
@@ -15,33 +15,30 @@ public class JohnMovi : MonoBehaviour
     public float Speed;
     public float JumpForce;
     private float LastShoot;
-    private int Health = 5;
+    private int Health = 7;
     public string textValue;
     public Text textEdit;
     public string textScore;
     public Text textEditScore;
+    private int score = 600;
+    public GameObject Boss;
 
-
-    private int score;
-    //public GameObject FrutCher;
-
-        
     void Start()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
-        
+
     }
-        
+
     void Update()
     {
         Horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Horizontal < 0.0f) 
+        if (Horizontal < 0.0f)
         {
             transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
         }
-        else if(Horizontal > 0.0f)
+        else if (Horizontal > 0.0f)
         {
             transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
@@ -69,7 +66,7 @@ public class JohnMovi : MonoBehaviour
             LastShoot = Time.time;
         }
 
-        
+
         textEdit.text = Health.ToString();
         textEditScore.text = score.ToString();
     }
@@ -91,7 +88,7 @@ public class JohnMovi : MonoBehaviour
             direction = Vector2.left;
         }
 
-        GameObject bullet = Instantiate(BulletPrefab, transform.position + direction * 0.1f , Quaternion.identity);
+        GameObject bullet = Instantiate(BulletPrefab, transform.position + direction * 0.1f, Quaternion.identity);
         bullet.GetComponent<ScriptBullet>().SetDirection(direction);
     }
 
@@ -103,8 +100,8 @@ public class JohnMovi : MonoBehaviour
     public void Hit()
     {
         Health -= 1;
-        if (Health == 0) 
-        { 
+        if (Health == 0)
+        {
             Destroy(gameObject);
             Resect();
         }
@@ -130,9 +127,15 @@ public class JohnMovi : MonoBehaviour
             Resect();
         }
 
-        if (collision.gameObject.tag == "finish" && score == 300)
+        if (collision.gameObject.tag == "Boss")
         {
-            SceneManager.LoadScene("Level3");
+            Destroy(gameObject);
+            Resect();
+        }
+
+        if (collision.gameObject.tag == "finish" && score == 900 && Boss == null)
+        {
+            SceneManager.LoadScene("Credits");
         }
     }
 

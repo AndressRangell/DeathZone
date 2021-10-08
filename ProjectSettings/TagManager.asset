@@ -8,6 +8,10 @@ TagManager:
   - ball
   - vacio
   - finish
+  - frut
+  - frutCharries
+  - frutOrange
+  - Boss
   layers:
   - Default
   - TransparentFX
