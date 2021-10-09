@@ -20,6 +20,7 @@ public class JohnMovi : MonoBehaviour
     public Text textEdit;
     public string textScore;
     public Text textEditScore;
+    public GameObject transition;
 
 
     private int score;
@@ -132,8 +133,15 @@ public class JohnMovi : MonoBehaviour
 
         if (collision.gameObject.tag == "finish" && score == 300)
         {
-            SceneManager.LoadScene("Level3");
+            transition.SetActive(true);
+            Invoke("Scene2", 2);
+            
         }
+    }
+
+    public void Scene2()
+    {
+        SceneManager.LoadScene("Level3");
     }
 
     private void Resect()

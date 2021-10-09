@@ -13,7 +13,7 @@ public class MushScript : MonoBehaviour
     public bool MoveToB = false;
     private Rigidbody2D MyRb;
     public float Speed;
-    public Animator animator;
+   // public Animator animator;
    
     void Start()
     {
@@ -59,10 +59,10 @@ public class MushScript : MonoBehaviour
         }
     }
 
-    public void MushHit()
+    /*public void MushHit()
     {
         animator.Play("mushHit");
         
-    }
+    }*/
 
 }

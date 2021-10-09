@@ -22,6 +22,7 @@ public class JohnLevel3 : MonoBehaviour
     public Text textEditScore;
     private int score = 600;
     public GameObject Boss;
+    public GameObject transition;
 
     void Start()
     {
@@ -135,8 +136,14 @@ public class JohnLevel3 : MonoBehaviour
 
         if (collision.gameObject.tag == "finish" && score == 900 && Boss == null)
         {
-            SceneManager.LoadScene("Credits");
+            transition.SetActive(true);
+            Invoke("Credits", 2);
         }
+    }
+
+    private void Credits()
+    {
+        SceneManager.LoadScene("Credits");
     }
 
     private void Resect()
