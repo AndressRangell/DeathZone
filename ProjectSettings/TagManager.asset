@@ -12,6 +12,7 @@ TagManager:
   - frutCharries
   - frutOrange
   - Boss
+  - grunt
   layers:
   - Default
   - TransparentFX

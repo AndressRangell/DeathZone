@@ -75,6 +75,9 @@ public class GruntFinal : MonoBehaviour
     public void Hit()
     {
         Health -= 1;
-        if (Health == 0) Destroy(gameObject);
+        if (Health == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

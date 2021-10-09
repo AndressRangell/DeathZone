@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4950300256205057013}
   - component: {fileID: 8100726997276119405}
   - component: {fileID: 292778477797819405}
-  - component: {fileID: 4846419061181535561}
   m_Layer: 0
   m_Name: JohnC
   m_TagString: Player
@@ -142,23 +141,3 @@ CapsuleCollider2D:
   m_Offset: {x: -0.022371292, y: 0.0031215847}
   m_Size: {x: 0.10190582, y: 0.15294641}
   m_Direction: 0
---- !u!114 &4846419061181535561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8426004773294136300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d1d5c5ec8c0e7d499ed517220a762ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 9029444900289498381, guid: 9dff86cddf6fcf64b8befa0afced0f7a, type: 3}
-  Speed: 1
-  JumpForce: 150
-  textValue: 5
-  textEdit: {fileID: 0}
-  textScore: 0
-  textEditScore: {fileID: 0}
-  FrutCher: {fileID: 0}

@@ -32,22 +32,31 @@ public class ScriptBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GruntScript grunt = collision.GetComponent<GruntScript>();
-        JohnMovi john = collision.GetComponent<JohnMovi>();
-        JohnLevel3 john3 = collision.GetComponent<JohnLevel3>();
-        if (grunt != null)
+        if (collision.tag == "Player" || collision.tag == "grunt" || collision.tag == "Boss")
         {
-            grunt.Hit();
+            GruntScript grunt = collision.GetComponent<GruntScript>();
+            GruntFinal boss = collision.GetComponent<GruntFinal>();
+            JohnMovi john = collision.GetComponent<JohnMovi>();
+            JohnLevel3 john3 = collision.GetComponent<JohnLevel3>();
+            if (grunt != null)
+            {
+                grunt.Hit();
+            }
+            if (john != null)
+            {
+                john.Hit();
+            }
+            if (john3 != null)
+            {
+                john3.Hit();
+            }
+            if (boss != null)
+            {
+                boss.Hit();
+            }
+            DestroyBullet();
         }
-        if (john != null)
-        {
-            john.Hit();
-        }
-        if (john3 != null)
-        {
-            john3.Hit();
-        }
-        DestroyBullet();
+
     }
-    
+
 }
