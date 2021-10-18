@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
-public class JohnMovi : MonoBehaviour
+public class JohnLevel2 : MonoBehaviour
 {
+    
     public GameObject BulletPrefab;
     private Rigidbody2D Rigidbody2D;
     private Animator Animator;
@@ -21,28 +21,24 @@ public class JohnMovi : MonoBehaviour
     public string textScore;
     public Text textEditScore;
     public GameObject transition;
+    private int score = 300;
 
-
-    private int score;
-    //public GameObject FrutCher;
-
-        
     void Start()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
-        
+
     }
-        
+
     void Update()
     {
         Horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Horizontal < 0.0f) 
+        if (Horizontal < 0.0f)
         {
             transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
         }
-        else if(Horizontal > 0.0f)
+        else if (Horizontal > 0.0f)
         {
             transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
@@ -70,7 +66,7 @@ public class JohnMovi : MonoBehaviour
             LastShoot = Time.time;
         }
 
-        
+
         textEdit.text = Health.ToString();
         textEditScore.text = score.ToString();
     }
@@ -92,7 +88,7 @@ public class JohnMovi : MonoBehaviour
             direction = Vector2.left;
         }
 
-        GameObject bullet = Instantiate(BulletPrefab, transform.position + direction * 0.1f , Quaternion.identity);
+        GameObject bullet = Instantiate(BulletPrefab, transform.position + direction * 0.1f, Quaternion.identity);
         bullet.GetComponent<ScriptBullet>().SetDirection(direction);
     }
 
@@ -104,8 +100,8 @@ public class JohnMovi : MonoBehaviour
     public void Hit()
     {
         Health -= 1;
-        if (Health == 0) 
-        { 
+        if (Health == 0)
+        {
             Destroy(gameObject);
             Resect();
         }
@@ -119,33 +115,24 @@ public class JohnMovi : MonoBehaviour
             Resect();
         }
 
-        if (collision.gameObject.tag == "ball")
-        {
-            Destroy(gameObject);
-            Resect();
-        }
+        
 
-        if (collision.gameObject.tag == "vacio")
-        {
-            Destroy(gameObject);
-            Resect();
-        }
-
-        if (collision.gameObject.tag == "finish" && score == 300)
+        if (collision.gameObject.tag == "finish" && score == 600)
         {
             transition.SetActive(true);
-            Invoke("Scene2", 2);
-            
+            Invoke("Scene3", 2);
+
         }
     }
 
-    public void Scene2()
+    public void Scene3()
     {
-        SceneManager.LoadScene("Level2");
+        SceneManager.LoadScene("Level3");
     }
 
     private void Resect()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -154,6 +141,12 @@ public class JohnMovi : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "ball")
+        {
+            Destroy(gameObject);
+            Resect();
+        }
+
         if (collision.gameObject.tag == "frutCharries")
         {
             Destroy(GameObject.FindWithTag("frutCharries"));
@@ -165,6 +158,7 @@ public class JohnMovi : MonoBehaviour
         {
             Destroy(GameObject.FindWithTag("frut"));
             Score();
+            Time.timeScale = 1.5f;
             Debug.Log("choca con fruta");
         }
 
@@ -189,6 +183,7 @@ public class JohnMovi : MonoBehaviour
     }
 
 }
+
 
 
 

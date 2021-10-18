@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Frut3Script : MonoBehaviour
+public class RandomFrut : MonoBehaviour
 {
-    public Transform[] puntos;
+    public Transform p1;
+    public Transform p2;
+    public Transform p3;
     public GameObject frut;
 
     void Start()
@@ -14,17 +16,16 @@ public class Frut3Script : MonoBehaviour
         switch (i)
         {
             case 0:
-                Instantiate(frut,puntos[0].position,frut.transform.rotation);
+                Instantiate(frut, p1.position, frut.transform.rotation);
                 break;
             case 1:
-                Instantiate(frut, puntos[1].position, frut.transform.rotation);
+                Instantiate(frut, p2.position, frut.transform.rotation);
                 break;
             case 2:
-                Instantiate(frut, puntos[2].position, frut.transform.rotation);
+                Instantiate(frut, p3.position, frut.transform.rotation);
                 break;
         }
 
 
     }
-
 }

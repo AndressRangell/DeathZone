@@ -26,6 +26,7 @@ public class JohnLevel3 : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         Rigidbody2D = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
 

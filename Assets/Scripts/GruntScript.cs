@@ -15,6 +15,7 @@ public class GruntScript : MonoBehaviour
         if (John == null) return;
 
         Vector3 direction = John.position - transform.position;
+
         if (direction.x >= 0.0f) transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         else transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
 

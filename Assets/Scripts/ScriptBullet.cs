@@ -38,6 +38,7 @@ public class ScriptBullet : MonoBehaviour
             GruntFinal boss = collision.GetComponent<GruntFinal>();
             JohnMovi john = collision.GetComponent<JohnMovi>();
             JohnLevel3 john3 = collision.GetComponent<JohnLevel3>();
+            JohnLevel2 john2 = collision.GetComponent<JohnLevel2>();
             if (grunt != null)
             {
                 grunt.Hit();
@@ -53,6 +54,10 @@ public class ScriptBullet : MonoBehaviour
             if (boss != null)
             {
                 boss.Hit();
+            }
+            if (john2 != null)
+            {
+                john2.Hit();
             }
             DestroyBullet();
         }
